@@ -1,0 +1,39 @@
+.flex-container {
+  align: center;
+  list-style: none;
+
+
+
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: center;
+}
+
+.column {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  float: left;
+  width: 75%;
+
+}
+.dropdown-menu{
+  position: relative;
+}
+
+.btn{
+  width:100%;
+}
+.exercises{
+  width: 100%;
+}
+
+.row{
+  background-color: rgba(192, 221, 176, 0.5);
+}
+h1{
+  color: rgb(7, 22, 227);
+}

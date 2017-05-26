@@ -1,0 +1,18 @@
+<div class="row">
+  <h1 align="center"> Exercises list </h1>
+  <div class="exercises">
+    <div class="flex-container column ">
+      <div *ngFor="let exercise of exercises " class="btn-group " dropdown>
+        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+             {{ exercise.name }} <span class="caret"></span>
+          </button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem" [innerHTML]= "exercise.description"></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem" align="center"><iframe [src]="'https://www.youtube.com/embed/' + exercise.video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></li>
+          </ul>
+          <br><br>
+      </div>
+    </div>
+  </div>
+</div>

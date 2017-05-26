@@ -1,0 +1,57 @@
+
+<h1> Edit profile </h1>
+<a [routerLink]="['/profile']"> Back to profile </a>
+
+<form>
+  <fieldset>
+    <legend> Profile info </legend>
+  <!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
+
+    <label> Username </label>
+    <input type="text" value="{{this.user.username}}" placeholder="{{this.user.username}}" [(ngModel)]=this.newUser.username name="brand" required />
+
+    <label> Name </label>
+    <input type="text" placeholder="{{this.user.name}}" value="{{this.user.name}}" [(ngModel)]="this.newUser.name" name="name" required />
+
+    <label> Last Name </label>
+    <input type="text" placeholder="{{this.user.lastName}}" value="{{this.user.lastName}}" [(ngModel)]="this.newUser.lastName" name="lastName" required />
+
+    <label> age </label>
+    <input type="number" placeholder="{{this.user.age}}" value="{{this.user.age}}" [(ngModel)]="this.newUser.age" name="age" required />
+
+    <label> height </label>
+    <input type="number" placeholder="{{this.user.height}}" value="{{this.user.height}}" [(ngModel)]="this.newUser.height" name="height" required />
+
+    <label> weigth </label>
+    <input type="number" placeholder="{{this.user.weigth}}" value="{{this.user.weigth}}" [(ngModel)]="this.newUser.weigth" name="weigth" required />
+
+    <label> mass_muscle </label>
+    <input type="number" placeholder="{{this.user.mass_muscle}}" value="{{this.user.mass_muscle}}" [(ngModel)]="this.newUser.mass_muscle" name="mass_muscle" required />
+
+    <label> mass_water </label>
+    <input type="number" placeholder="{{this.user.mass_water}}" value="{{this.user.mass_water}}" [(ngModel)]="this.newUser.mass_water" name="mass_water" required />
+
+    <label> mass_bone </label>
+    <input type="number" placeholder="{{this.user.mass_bone}}" value="{{this.user.mass_bone}}" [(ngModel)]="this.newUser.mass_bone" name="mass_bone" required />
+
+    <label> mass_fat </label>
+    <input type="number" placeholder="{{this.user.mass_fat}}" value="{{this.user.mass_fat}}" [(ngModel)]="this.newUser.mass_fat" name="mass_fat" required />
+
+
+
+
+
+
+    <!-- <input type="text" #spec />
+    <button (click)="addSpec(spec.value); spec.value = ''"> add </button>
+
+    <ul>
+      <li *ngFor="let spec of newPhone.specs"> {{ spec }} </li>
+    </ul>
+    <small *ngIf="!newPhone.specs.length"> This phone has no specs :( </small> -->
+
+
+
+  </fieldset>
+  <button (click)="submit()"> submit </button>
+</form>
