@@ -32,6 +32,7 @@ import {ProfileService} from './profile.service';
     LoginComponent,
     SignupComponent,
     NavbarComponent,
+    FileSelectDirective,
     SafePipe,
     FilterPipe,
     ProfileComponent,

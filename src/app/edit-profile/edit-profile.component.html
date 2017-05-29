@@ -5,7 +5,11 @@
 <form>
   <fieldset>
     <legend> Profile info </legend>
-  <!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
+
+    <label> Change Photo Profile</label>
+    <input type="file" name="file" ng2FileSelect  [uploader]="uploader" />
+    <button (click)="addImage()"> Add image </button>
+
 
     <label> Username </label>
     <input type="text" value="{{this.user.username}}" placeholder="{{this.user.username}}" [(ngModel)]=this.newUser.username name="brand" required />

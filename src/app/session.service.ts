@@ -97,12 +97,19 @@ export class SessionService implements CanActivate {
 
   edit(user){
     console.log(user)
-  let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
-  let options = new RequestOptions({ headers: headers });
-  console.log(options);
-  return this.http.put(`${this.BASE_URL}/api/users/${user._id}`, user, options)
-    .map((res) => res.json());
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
+    let options = new RequestOptions({ headers: headers });
+    console.log(options);
+    return this.http.put(`${this.BASE_URL}/api/users/${user._id}`, user, options).map((response) =>{
+      let user = response.json() && response.json().user;
+      localStorage.setItem('user', JSON.stringify(user) );
+      return true;
+    })
+
+
   }
+
+  
 
 
   logout() {

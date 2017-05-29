@@ -14,7 +14,7 @@ export class EditProfileComponent implements OnInit {
   user : Object = {};
 
   uploader: FileUploader = new FileUploader({
-    url: `http://localhost:3000/api/users/`,
+    url: `http://localhost:3000/api/users/edit`,
     authToken: `JWT ${this.session.token}`
   });
 
@@ -67,13 +67,13 @@ export class EditProfileComponent implements OnInit {
      this.newUser.count_variable = user.count_variable;
 
 
-    this.uploader.onSuccessItem = (item, user) => {
-      localStorage.removeItem("user")
-      localStorage.setItem("user",user);
-    };
-    this.uploader.onErrorItem = (item, response, status, headers) => {
-      this.feedback = JSON.parse(response).message;
-    };
+    // this.uploader.onSuccessItem = (item, user) => {
+    //   localStorage.removeItem("user")
+    //   localStorage.setItem("user",user);
+    // };
+    // this.uploader.onErrorItem = (item, response, status, headers) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
   }
   submit(){
     let user= JSON.parse(localStorage.getItem("user"))
@@ -87,5 +87,11 @@ export class EditProfileComponent implements OnInit {
     })
   }
 
+  addImage(){
+    this.uploader.onBuildItemForm = (item,form)=>{
+      form.append("id",this.user["_id"] )
+    };
+    this.uploader.uploadAll();
+  }
 
 }
