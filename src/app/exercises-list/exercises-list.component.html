@@ -1,18 +1,54 @@
 <div class="row">
   <h1 align="center"> Exercises list </h1>
   <div class="exercises">
-    <div class="flex-container column ">
-      <div *ngFor="let exercise of exercises " class="btn-group " dropdown>
-        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-             {{ exercise.name }} <span class="caret"></span>
+    <div class="flex-container column " *ngIf="view">
+      <div class="btn-group " dropdown>
+        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle" (click)="cb.click()">
+             {{ exercises[0].name }} <span class="caret"></span>
           </button>
           <ul *dropdownMenu class="dropdown-menu" role="menu">
-            <li role="menuitem" [innerHTML]= "exercise.description"></li>
+            <li role="menuitem" [innerHTML]= "exercises[0].description"></li>
             <li class="divider dropdown-divider"></li>
-            <li role="menuitem" align="center"><iframe [src]="'https://www.youtube.com/embed/' + exercise.video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></li>
+            <li role="menuitem" align="center"><iframe [src]="'https://www.youtube.com/embed/' + exercises[0].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></li>
           </ul>
           <br><br>
       </div>
+      <div>
+        <tabset [justified]="true" #staticTabs>
+          <tab heading="{{ exercises[0].name }}">
+
+              <p role="menuitem" [innerHTML]= "exercises[0].description"></p>
+              <br>
+
+              <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[0].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+          </tab>
+          <tab heading="{{ exercises[1].name }}">
+
+              <p role="menuitem" [innerHTML]= "exercises[1].description"></p>
+              <br>
+
+              <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[1].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+            </tab>
+          <tab heading="Static Title 2">Static content 2</tab>
+          <tab heading="Static Title 3">Static content 3</tab>
+          <tab heading="Static Title 3">Static content 3</tab>
+          <tab heading="Static Title 3">Static content 3</tab>
+          <tab heading="Static Title 3">Static content 3</tab>
+          <tab heading="Static Title 3">Static content 3</tab>
+          <tab heading="Static Title 3">Static content 3</tab>
+          <tab heading="Static Title 3">Static content 3</tab>
+          <tab heading="Static Title 3">Static content 3</tab>
+          <tab heading="Static Title 3">Static content 3</tab>
+        </tabset>
+      </div>
+
+        <button type="button" class="btn btn-danger btn-lg" (click)="done()">DONE!!</button>
+
+
+    </div>
+    <div class="" *ngIf="view === false">
+      <h1>Ahora a descansar</h1>
+
     </div>
   </div>
 </div>

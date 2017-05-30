@@ -17,8 +17,11 @@
   -webkit-flex-direction: column;
   flex-direction: column;
   float: left;
-  width: 75%;
+  width: 100%;
 
+}
+.row{
+  border-radius: 6px;
 }
 .dropdown-menu{
   position: relative;

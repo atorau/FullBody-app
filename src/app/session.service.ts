@@ -53,6 +53,7 @@ export class SessionService implements CanActivate {
           this.user = jwtDecode(token).user;
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('token', token );
+          localStorage.setItem('user', JSON.stringify(user));
 
           this.isAuth = true;
           // return true to indicate successful login
@@ -79,7 +80,7 @@ export class SessionService implements CanActivate {
         this.isAuth = true;
         // store username and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('token', token );
-        localStorage.setItem('user', JSON.stringify(user) );
+        localStorage.setItem('user', JSON.stringify(user));
         // return true to indicate successful login
         return true;
       } else {
@@ -109,7 +110,7 @@ export class SessionService implements CanActivate {
 
   }
 
-  
+
 
 
   logout() {

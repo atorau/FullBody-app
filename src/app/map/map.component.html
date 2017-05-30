@@ -1,0 +1,11 @@
+<div class="container">
+      <h1>These are the gyms near you</h1>
+      <div class="form-group" class="hidden">
+        <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+      </div>
+      <agm-map class="my-map" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+        <div *ngFor="let resultado of resultados">
+          <agm-marker [latitude]="resultado.geometry.location.lat()" [longitude]="resultado.geometry.location.lng()"></agm-marker>
+        </div>
+      </agm-map>
+    </div>
