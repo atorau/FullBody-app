@@ -69,4 +69,7 @@ export class ExercisesListComponent implements OnInit {
     })
 
   }
+  changesrc(frame:any){
+    frame.src="'https://www.youtube.com/embed/' + this.exercises[0].video_link.slice(32) | safe"
+  }
 }

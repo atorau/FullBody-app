@@ -70,6 +70,7 @@ export class SessionService implements CanActivate {
 
   login(user) {
     return this.http.post(`${this.BASE_URL}/login`, user).map((response: Response) => {
+    
       // login successful if there's a jwt token in the response
       let token = response.json() && response.json().token;
       let user = response.json() && response.json().user;

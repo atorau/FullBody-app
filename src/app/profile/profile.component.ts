@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class ProfileComponent implements OnInit {
  user: Object = {};
+ isCollapsed: boolean = false;
  isAuth:boolean;
  constructor(
      private session: SessionService,
