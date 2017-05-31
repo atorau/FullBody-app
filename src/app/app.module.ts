@@ -28,6 +28,7 @@ import { AgmCoreModule } from "@agm/core";
 import { ReactiveFormsModule } from '@angular/forms';
 import {} from "@types/googlemaps";
 import { TabsModule } from 'ngx-bootstrap';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -44,7 +45,8 @@ import { TabsModule } from 'ngx-bootstrap';
     FilterPipe,
     ProfileComponent,
     EditProfileComponent,
-    MapComponent
+    MapComponent,
+    FooterComponent
 
   ],
   imports: [

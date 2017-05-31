@@ -13,6 +13,9 @@
     clear:both;
     padding:14px;
 }
+.navbar{
+  height: 70px;
+}
 #login-dp .social-buttons{
     margin:12px 0
 }
@@ -47,4 +50,7 @@
         background-color: inherit;
         border-top:0 none;
     }
+}
+.mbr-section{
+  background-color: rgba(0, 0, 0, 0.9);
 }

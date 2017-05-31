@@ -1,10 +1,16 @@
-<img src={{this.user.image}} alt="" width="25%">
-<h3>{{this.user.username}}</h3>
-<h3>{{this.user.name}}</h3>
-<h3>{{this.user.lastName}}</h3>
-<h3>{{this.user.age}}</h3>
-<h3>{{this.user.height}}</h3>
-<h3>{{this.user.weigth}}</h3>
-<h3>{{this.user.mass_muscle}}</h3>
-
-<a [routerLink]="['/edit']"> Edit Details </a>
+<section class="engine"></section>
+<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background" id="header1-2" style="background-image: url(assets/images/proyecto-1-2000x1250.jpg);">
+  <div class="mbr-box__magnet mbr-box__magnet--center-center mbr-after-navbar">
+    <div class="profile">
+      <img src={{this.user.image}} alt="" width="25%">
+      <h3>{{this.user.username}}</h3>
+      <h3>{{this.user.name}}</h3>
+      <h3>{{this.user.lastName}}</h3>
+      <h3>{{this.user.age}}</h3>
+      <h3>{{this.user.height}}</h3>
+      <h3>{{this.user.weigth}}</h3>
+      <h3>{{this.user.mass_muscle}}</h3>
+      <a [routerLink]="['/edit']"> Edit Details </a>
+    </div>
+  </div>
+</section>

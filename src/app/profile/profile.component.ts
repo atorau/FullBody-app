@@ -19,18 +19,20 @@ export class ProfileComponent implements OnInit {
      private route: ActivatedRoute,
      private profileService: ProfileService
    // private userService: UserService
- ) {
-   this.user = JSON.parse(localStorage.getItem("user"))
-   console.log("USER",this.user)
-
- }
+  )
+{
+ //   this.user = JSON.parse(localStorage.getItem("user"))
+ //   console.log("USER",this.user)
+ //
+}
 
  ngOnInit() {
-  let user= JSON.parse(localStorage.getItem("user"))
-  this.session.getUser(user._id)
+  let id= localStorage["id"];
+  this.session.getUser(id)
   .subscribe((user)=>{
     console.log(user)
     this.user=user
+    console.log("a aver ", this.user);
   })
 
 

@@ -11,6 +11,8 @@ export class SessionService implements CanActivate {
   public token: string;
   public isAuth: boolean;
   public user: string;
+  public role: string;
+  public id: string;
 
   BASE_URL: string = 'http://localhost:3000';
 
@@ -71,16 +73,22 @@ export class SessionService implements CanActivate {
       // login successful if there's a jwt token in the response
       let token = response.json() && response.json().token;
       let user = response.json() && response.json().user;
+      let role = response.json() && response.json().role;
+      this.id = response.json() && response.json().id;
 
       if (token) {
         // set token property
         this.token = token;
         this.user = jwtDecode(token).user;
+        this.role = jwtDecode(token).role;
+
+        console.log("user name", user.username);
 
         this.isAuth = true;
         // store username and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('token', token );
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user', user.username);
+        localStorage.setItem('id', user._id);
         // return true to indicate successful login
         return true;
       } else {
