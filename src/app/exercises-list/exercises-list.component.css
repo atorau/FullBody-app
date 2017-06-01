@@ -13,6 +13,9 @@
   display: -webkit-flex;
   display: center;
 }
+iframe{
+  max-width: 100%;
+}
 
 .column {
   -webkit-flex-direction: column;

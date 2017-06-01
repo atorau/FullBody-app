@@ -55,7 +55,11 @@ export class SessionService implements CanActivate {
           this.user = jwtDecode(token).user;
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('token', token );
-          localStorage.setItem('user', JSON.stringify(user));
+          // localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('user', user.username);
+          localStorage.setItem('id', user._id);
+          this.id = user._id;
+          this.role = user.role;
 
           this.isAuth = true;
           // return true to indicate successful login
@@ -70,12 +74,12 @@ export class SessionService implements CanActivate {
 
   login(user) {
     return this.http.post(`${this.BASE_URL}/login`, user).map((response: Response) => {
-    
+
       // login successful if there's a jwt token in the response
       let token = response.json() && response.json().token;
       let user = response.json() && response.json().user;
-      let role = response.json() && response.json().role;
-      this.id = response.json() && response.json().id;
+      // let role = response.json() && response.json().role;
+      // this.id = response.json() && response.json().id;
 
       if (token) {
         // set token property
@@ -90,6 +94,8 @@ export class SessionService implements CanActivate {
         localStorage.setItem('token', token );
         localStorage.setItem('user', user.username);
         localStorage.setItem('id', user._id);
+        this.id = user._id;
+        this.role = user.role;
         // return true to indicate successful login
         return true;
       } else {
@@ -126,9 +132,11 @@ export class SessionService implements CanActivate {
     // clear token remove user from local storage to log user out
     this.token = null;
     this.user = null;
+    this.id = null;
     this.isAuth = false;
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('id');
 
     this.router.navigate(['/login']);
   }
