@@ -1,5 +1,62 @@
+<section class="engine"></section>
+<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background" id="header1-2" style="background-image: url(assets/images/profile.jpg);">
+  <div class="mbr-box__magnet mbr-box__magnet--center-center mbr-after-navbar">
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+        	 <div class="well profile">
+                <div class="col-sm-12">
+                    <div class="col-xs-12 col-sm-8">
+                        <h2>{{this.user.username}}</h2>
+                        <h3>{{this.user.name}}</h3>
+                        <h4><h3>{{this.user.lastName}}</h3></h4>
+                        <p><strong>age: </strong> {{this.user.age}}</p>
+                        <p><strong>heigth: </strong> {{this.user.height}} </p>
+                        <p><strong>weigth: </strong>{{this.user.weigth}}</p>
+                        <div class="btn-group dropup btn-block">
+                          <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"> Tecnical Dates </button>
+                          <ul class="dropdown-menu text-left " [collapse]="isCollapsed" role="menu">
+                            <li><a><span class="fa fa-envelope pull-right"></span>Muscle Mass: {{this.user.mass_muscle}}% </a></li>
+                            <li class="divider"></li>
+                            <li><a><span class="fa fa-list pull-right"></span>Water Mass: {{this.user.mass_water}}% </a></li>
+                            <li class="divider"></li>
+                            <li><a><span class="fa fa-warning pull-right"></span>Bone Mass: {{this.user.mass_bone}}%</a></li>
+                            <li class="divider"></li>
+                            <li><a><span class="fa fa-warning pull-right"></span>Fat Mass: {{this.user.mass_fat}}%</a></li>
+                          </ul>
+                          <br><br>
+                        </div>
 
-<h3>{{this.user.username}}</h3>
-<h3>{{this.user.role}}</h3>
 
-<a [routerLink]="['/edit']"> Edit Details </a>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-4 text-center" *ngIf="!this.user.image">
+                        <figure>
+                            <img src="assets/images/profile1.png" alt="" class="img-circle img-responsive">
+
+                        </figure>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 text-center">
+                        <figure>
+                            <img src={{this.user.image}} alt="" class="img-circle img-responsive">
+                            <h4>Level: {{this.user.role}}</h4>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-xs-12 divider text-center">
+                    <div class="col-xs-12 col-sm-4 emphasis">
+
+                    </div>
+                    <div class="col-xs-12 col-sm-4 emphasis">
+                      <h2><strong> {{this.user.count_total}} </strong></h2>
+                      <p><small>WorkOuts Realiced</small></p>
+                        <button type="button" class="btn btn-primary" [routerLink]="['/edit']">Edit Profile</button>
+                    </div>
+
+                </div>
+        	 </div>
+    		</div>
+    	</div>
+    </div>
+  </div>
+</section>

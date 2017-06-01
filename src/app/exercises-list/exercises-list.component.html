@@ -1,18 +1,166 @@
-<div class="row">
-  <h1 align="center"> Exercises list </h1>
-  <div class="exercises">
-    <div class="flex-container column ">
-      <div *ngFor="let exercise of exercises " class="btn-group " dropdown>
-        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-             {{ exercise.name }} <span class="caret"></span>
-          </button>
-          <ul *dropdownMenu class="dropdown-menu" role="menu">
-            <li role="menuitem" [innerHTML]= "exercise.description"></li>
-            <li class="divider dropdown-divider"></li>
-            <li role="menuitem" align="center"><iframe [src]="'https://www.youtube.com/embed/' + exercise.video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></li>
-          </ul>
-          <br><br>
+<section class="engine"></section>
+<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background" id="header1-2" style="background-image: url(assets/images/routine1.jpg);">
+  <div class="mbr-box__magnet mbr-box__magnet--center-center mbr-after-navbar">
+    <div class="row block">
+      <h1 align="center"> WORKOUT OF THE DAY </h1>
+      <div id="exercises" class="exercises hidden">
+
+
+
+        <div class="flex-container column " *ngIf="view">
+          <div class="tab">
+              <tabset [justified]="true" #staticTabs>
+                <tab heading="CARDIO">
+
+                    <h4 class="name">{{ exercises[0].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 20 minutes 50% resistance</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 30 minutes 65% resistance</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 30 minutes 65% resistance</p>
+                    <p role="menuitem" [innerHTML]= "exercises[0].description"></p>
+                    <br>
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[0].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="LEGS">
+                  <h4 class="name">{{ exercises[1].name }}</h4>
+                  <h5>level {{this.session.role}}</h5>
+                  <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 10 rep at 60% 1M.R</p>
+                  <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 8 rep at 75% 1M.R</p>
+                  <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 8 rep at 85 1M.R</p>
+
+                  <p role="menuitem" [innerHTML]= "exercises[1].description"></p>
+                  <br>
+
+                  <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[1].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="LEGS">
+                    <h4 class="name">{{ exercises[2].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 10 rep at 60% 1M.R</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 8 rep at 75% 1M.R</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 8 rep at 85 1M.R</p>
+                    <p role="menuitem" [innerHTML]= "exercises[2].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[2].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="BACK">
+                    <h4 class="name">{{ exercises[3].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 9 rep at 60% 1M.R</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 6 rep at 75% 1M.R</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 6 rep at 85 1M.R</p>
+                    <p role="menuitem" [innerHTML]= "exercises[3].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[3].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="SHOULDER">
+                    <h4 class="name">{{ exercises[4].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 9 rep at 60% 1M.R</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 6 rep at 75% 1M.R</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 6 rep at 85 1M.R</p>
+                    <p role="menuitem" [innerHTML]= "exercises[4].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[4].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="CHEST">
+                    <h4 class="name">{{ exercises[5].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 12 rep at 60% 1M.R</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 10 rep at 75% 1M.R</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 8 rep at 85 1M.R</p>
+                    <p role="menuitem" [innerHTML]= "exercises[5].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[5].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="BICEPS">
+                    <h4 class="name">{{ exercises[6].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 12 rep at 60% 1M.R</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 10 rep at 75% 1M.R</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 8 rep at 85 1M.R</p>
+                    <p role="menuitem" [innerHTML]= "exercises[6].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[6].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="TRICEPS">
+                    <h4 class="name">{{ exercises[7].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 9 rep at 60% 1M.R</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 6 rep at 75% 1M.R</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 6 rep at 85 1M.R</p>
+                    <p role="menuitem" [innerHTML]= "exercises[7].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[7].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="GLUTES">
+                    <h4 class="name">{{ exercises[8].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 10 rep at 60% 1M.R</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 8 rep at 75% 1M.R</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 8 rep at 85 1M.R</p>
+                    <p role="menuitem" [innerHTML]= "exercises[8].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[8].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="ABS">
+                    <h4 class="name">{{ exercises[9].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 10 rep at 60% 1M.R</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 8 rep at 75% 1M.R</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 8 rep at 85 1M.R</p>
+                    <p role="menuitem" [innerHTML]= "exercises[9].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[9].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="ABS">
+                    <h4 class="name">{{ exercises[10].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 3 set of 10 rep at 60% 1M.R</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 3 set of 8 rep at 75% 1M.R</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 3 set of 8 rep at 85 1M.R</p>
+                    <p role="menuitem" [innerHTML]= "exercises[10].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[10].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+                <tab heading="CARDIO">
+                    <h4 class="name">{{ exercises[11].name }}</h4>
+                    <h5>level {{this.session.role}}</h5>
+                    <p *ngIf="this.session.role === 'BEGINNER'"> 20 minutes 50% resistance</p>
+                    <p *ngIf="this.session.role === 'REGULAR'"> 30 minutes 65% resistance</p>
+                    <p *ngIf="this.session.role === 'ADVANCED'"> 30 minutes 65% resistance</p>
+                    <p role="menuitem" [innerHTML]= "exercises[11].description"></p>
+                    <br>
+
+                    <p align="center"><iframe align="center"[src]="'https://www.youtube.com/embed/' + exercises[11].video_link.slice(32) | safe" width="560" height="315" allowfullscreen></iframe></p>
+                </tab>
+              </tabset>
+          </div>
+
+            <button type="button" class="btn btn-danger btn-lg" (click)="done()">DONE!!</button>
+
+
+        </div>
+        <div class="" *ngIf="view === false">
+          <h1>Ahora a descansar</h1>
+
+        </div>
+      </div>
+
+      <div id="spinner">
+  <h1>We are creating your routine</h1>
+  <div id="line" class="line"></div>
+  <img src="assets/images/qsieaSz.gif" alt=""/>
       </div>
     </div>
   </div>
-</div>
+</section>

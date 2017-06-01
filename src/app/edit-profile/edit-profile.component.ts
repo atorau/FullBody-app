@@ -14,7 +14,7 @@ export class EditProfileComponent implements OnInit {
   user : Object = {};
 
   uploader: FileUploader = new FileUploader({
-    url: `http://localhost:3000/api/users/`,
+    url: `http://localhost:3000/api/users/edit`,
     authToken: `JWT ${this.session.token}`
   });
 
@@ -40,45 +40,49 @@ export class EditProfileComponent implements OnInit {
   constructor( private session: SessionService,
    private router:  Router,
    private route: ActivatedRoute,
-   private profileService: ProfileService) { this.user = JSON.parse(localStorage.getItem("user"))
-  console.log("USER",this.user) }
+   private profileService: ProfileService) {
+    //  this.user = JSON.parse(localStorage.getItem("user"))
+    //  console.log("USER",this.user)
+   }
 
   ngOnInit() {
-    let user= JSON.parse(localStorage.getItem("user"))
-    this.session.getUser(user._id)
+    let id= localStorage["id"];
+    this.session.getUser(id)
      .subscribe((user)=>{
        this.user=user
        console.log(this.user)
+       this.newUser._id = this.user["_id"];
+       this.newUser.username = this.user["username"];
+       this.newUser.password = this.user["password"];
+       this.newUser.image = this.user["image"];
+       this.newUser.name =  this.user["name"];
+       this.newUser.lastName = this.user["lastName"];
+       this.newUser.age = this.user["age"];
+       this.newUser.height = this.user["height"];
+       this.newUser.weigth = this.user["weigth"];
+       this.newUser.mass_muscle = this.user["mass_muscle"];
+       this.newUser.mass_water = this.user["mass_water"];
+       this.newUser.mass_bone = this.user["mass_bone"];
+       this.newUser.mass_fat = this.user["mass_fat"];
+       this.newUser.count_total = this.user["count_total"];
+       this.newUser.count_variable = this.user["count_variable"];
      });
-     this.newUser._id = user._id;
-     this.newUser.username = user.username;
-     this.newUser.password = user.password;
-     this.newUser.image = user.image;
-     this.newUser.name = user.name;
-     this.newUser.lastName = user.lastName;
-     this.newUser.age = user.age;
-     this.newUser.height = user.height;
-     this.newUser.weigth = user.weigth;
-     this.newUser.mass_muscle = user.mass_muscle;
-     this.newUser.mass_water = user.mass_water;
-     this.newUser.mass_bone = user.mass_bone;
-     this.newUser.mass_fat = user.mass_fat;
-     this.newUser.count_total = user.count_total;
-     this.newUser.count_variable = user.count_variable;
 
 
-    this.uploader.onSuccessItem = (item, user) => {
-      localStorage.removeItem("user")
-      localStorage.setItem("user",user);
-    };
-    this.uploader.onErrorItem = (item, response, status, headers) => {
-      this.feedback = JSON.parse(response).message;
-    };
+
+
+    // this.uploader.onSuccessItem = (item, user) => {
+    //   localStorage.removeItem("user")
+    //   localStorage.setItem("user",user);
+    // };
+    // this.uploader.onErrorItem = (item, response, status, headers) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
   }
   submit(){
-    let user= JSON.parse(localStorage.getItem("user"))
+    // let user= JSON.parse(localStorage.getItem("user"))
 
-    console.log("userEdit", this.user)
+    console.log("userEdit", this.newUser)
 
     this.session.edit(this.newUser)
     .subscribe((userEdit)=>{
@@ -87,5 +91,11 @@ export class EditProfileComponent implements OnInit {
     })
   }
 
+  addImage(){
+    this.uploader.onBuildItemForm = (item,form)=>{
+      form.append("id",this.newUser["_id"] )
+    };
+    this.uploader.uploadAll();
+  }
 
 }

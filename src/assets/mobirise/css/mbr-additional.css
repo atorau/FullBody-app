@@ -1,0 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+#header1-2 H1 {
+  font-size: 32px;
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+#header1-2 P {
+  font-size: 17px;
+  font-family: 'Montserrat', sans-serif;
+}

@@ -1,0 +1,16 @@
+<section class="engine"></section>
+<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background" id="header1-2" style="background-image: url(assets/images/gyms.jpg);">
+  <div class="mbr-box__magnet mbr-box__magnet--center-center mbr-after-navbar">
+    <div class="container">
+      <h1>These are the gyms near you</h1>
+      <div class="form-group" class="hidden">
+        <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+      </div>
+      <agm-map class="my-map" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+        <div *ngFor="let resultado of resultados">
+          <agm-marker [latitude]="resultado.geometry.location.lat()" [longitude]="resultado.geometry.location.lng()"></agm-marker>
+        </div>
+      </agm-map>
+    </div>
+  </div>
+</section>

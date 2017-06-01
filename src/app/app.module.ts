@@ -23,6 +23,14 @@ import { FilterPipe } from './filter.pipe';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import {ProfileService} from './profile.service';
+import { MapComponent } from './map/map.component';
+import { AgmCoreModule } from "@agm/core";
+import { ReactiveFormsModule } from '@angular/forms';
+import {} from "@types/googlemaps";
+import { TabsModule } from 'ngx-bootstrap';
+import { FooterComponent } from './footer/footer.component';
+
+
 
 @NgModule({
   declarations: [
@@ -32,22 +40,32 @@ import {ProfileService} from './profile.service';
     LoginComponent,
     SignupComponent,
     NavbarComponent,
+    FileSelectDirective,
     SafePipe,
     FilterPipe,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    MapComponent,
+    FooterComponent
+
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyC78vpwi7aeVo0o_6DlQm8_B4NM41EUEr4",
+      libraries: ["places"]
+    }),
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     BsDropdownModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [ProfileService, ExerciseService,SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+// platformBrowserDynamic().bootstrapModule(AppModule);

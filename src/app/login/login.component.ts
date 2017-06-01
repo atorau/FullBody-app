@@ -28,9 +28,10 @@ export class LoginComponent implements OnInit {
     this.session.login(this.user).subscribe(result => {
         if (result === true) {
           // login successful
-          this.router.navigate(['/user']);
+          this.router.navigate(['/']);
    			} else {
           // login failed
+          console.log("alerta mal codigo",this.error)
           this.error = 'Username or password is incorrect';
         }
     });

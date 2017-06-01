@@ -11,6 +11,8 @@ export class SessionService implements CanActivate {
   public token: string;
   public isAuth: boolean;
   public user: string;
+  public role: string;
+  public id: string;
 
   BASE_URL: string = 'http://localhost:3000';
 
@@ -53,6 +55,11 @@ export class SessionService implements CanActivate {
           this.user = jwtDecode(token).user;
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('token', token );
+          // localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('user', user.username);
+          localStorage.setItem('id', user._id);
+          this.id = user._id;
+          this.role = user.role;
 
           this.isAuth = true;
           // return true to indicate successful login
@@ -67,19 +74,28 @@ export class SessionService implements CanActivate {
 
   login(user) {
     return this.http.post(`${this.BASE_URL}/login`, user).map((response: Response) => {
+
       // login successful if there's a jwt token in the response
       let token = response.json() && response.json().token;
       let user = response.json() && response.json().user;
+      // let role = response.json() && response.json().role;
+      // this.id = response.json() && response.json().id;
 
       if (token) {
         // set token property
         this.token = token;
         this.user = jwtDecode(token).user;
+        this.role = jwtDecode(token).role;
+
+        console.log("user name", user.username);
 
         this.isAuth = true;
         // store username and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('token', token );
-        localStorage.setItem('user', JSON.stringify(user) );
+        localStorage.setItem('user', user.username);
+        localStorage.setItem('id', user._id);
+        this.id = user._id;
+        this.role = user.role;
         // return true to indicate successful login
         return true;
       } else {
@@ -97,21 +113,30 @@ export class SessionService implements CanActivate {
 
   edit(user){
     console.log(user)
-  let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
-  let options = new RequestOptions({ headers: headers });
-  console.log(options);
-  return this.http.put(`${this.BASE_URL}/api/users/${user._id}`, user, options)
-    .map((res) => res.json());
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
+    let options = new RequestOptions({ headers: headers });
+    console.log(options);
+    return this.http.put(`${this.BASE_URL}/api/users/${user._id}`, user, options).map((response) =>{
+      let user = response.json() && response.json().user;
+      localStorage.setItem('user', JSON.stringify(user) );
+      return true;
+    })
+
+
   }
+
+
 
 
   logout() {
     // clear token remove user from local storage to log user out
     this.token = null;
     this.user = null;
+    this.id = null;
     this.isAuth = false;
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('id');
 
     this.router.navigate(['/login']);
   }

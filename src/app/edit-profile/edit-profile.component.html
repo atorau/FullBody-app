@@ -1,57 +1,84 @@
+<section class="engine"></section>
+<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background" id="header1-2" style="background-image: url(assets/images/edit.jpg);">
+  <div class="mbr-box__magnet mbr-box__magnet--center-center mbr-after-navbar">
+    <div class="container">
+    	<div class="row">
+    		<div class="full-width bg-transparent">
+            <h1 class="text-center color">Change your image</h1>
 
-<h1> Edit profile </h1>
-<a [routerLink]="['/profile']"> Back to profile </a>
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-12">
+            <div class="full-width">
+            <input type="file" id="base-input" ng2FileSelect  [uploader]="uploader" class="form-control form-input form-style-base">
+            <input type="text" id="fake-input" class="form-control form-input form-style-fake" placeholder="Choose your File" readonly>
+            <span class="glyphicon glyphicon-open input-place"></span>
+            <br><br><br><br>
+            <button class="btn btn-primary" (click)="addImage()"> Add image </button>
+        </div>
+            <div class="full-width">
+                <h1 class="text-center color">Edit your profile</h1>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="custom-form">
+                    <div class="text-center bg-form">
+                        <div class="img-section">
+                            <img *ngIf="!this.user.image" src="assets/images/profile1.png"  class="imgCircle" alt="Profile picture">
+                            <img src={{this.user.image}} class="imgCircle" alt="Profile picture">
+                            <span class="fake-icon-edit" id="PicUpload" style="color: #ffffff;"><span class="glyphicon glyphicon-camera camera"></span></span>
+                        <div class="col-lg-12">
+                        </div>
+                        </div>
+                        <input type="file" id="image-input" onchange="readURL(this);" accept="image/*" disabled class="form-control form-input Profile-input-file" >
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input type="text" class="form-control form-input" [(ngModel)]="newUser.name" name="name" required id="name" placeholder="name">
+                        <span class="glyphicon glyphicon-user input-place"></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input type="text" class="form-control form-input" [(ngModel)]="newUser.lastName" name="lastName" placeholder="Last Name" required id="name">
+                        <span class="glyphicon glyphicon-user input-place"></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input type="number" class="form-control form-input" [(ngModel)]="newUser.age" name="age" required placeholder="age" id="name">
+                        <span class="glyphicon glyphicon-user input-place"></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input type="number" class="form-control form-input" [(ngModel)]="newUser.height" name="height" required placeholder="Height" id="email">
+                        <span class="glyphicon glyphicon-arrow-up input-place"></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input type="number" class="form-control form-input" [(ngModel)]="newUser.weigth" name="weigth" required placeholder="Weigth" id="phone">
+                        <span class="glyphicon glyphicon-scale input-place"></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input type="number" class="form-control form-input" [(ngModel)]="newUser.mass_muscle" name="mass_muscle" placeholder="Muscle %" required id="place">
+                        <span class="glyphicon glyphicon-stats input-place"></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input type="number" class="form-control form-input" [(ngModel)]="newUser.mass_water" name="water" required placeholder="Water %" id="place">
+                        <span class="glyphicon glyphicon-stats input-place"></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input type="number" class="form-control form-input" [(ngModel)]="newUser.mass_bone" name="mass_bone" required
+                      placeholder="Bone %"  id="place">
+                        <span class="glyphicon glyphicon-stats input-place"></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input type="number" class="form-control form-input" [(ngModel)]="newUser.mass_fat" name="mass_fat" required placeholder="Fat %" id="place">
+                        <span class="glyphicon glyphicon-stats input-place"></span>
+                        <br>
+                    </div>
+                    <div class="col-lg-12 col-md-12 text-center">
+                        <button class="btn btn-primary" id="submit" (click)="submit()"><span class="glyphicon glyphicon-save"></span> Save</button>
+                        <button class="btn btn-primary" id="submit" [routerLink]="['/profile']"> Back to profile </button>
+                          <br><br>
+                    </div>
+                    </div>
+                </div>
+            </div>
 
-<form>
-  <fieldset>
-    <legend> Profile info </legend>
-  <!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
+        </div>
+        </div>
 
-    <label> Username </label>
-    <input type="text" value="{{this.user.username}}" placeholder="{{this.user.username}}" [(ngModel)]=this.newUser.username name="brand" required />
-
-    <label> Name </label>
-    <input type="text" placeholder="{{this.user.name}}" value="{{this.user.name}}" [(ngModel)]="this.newUser.name" name="name" required />
-
-    <label> Last Name </label>
-    <input type="text" placeholder="{{this.user.lastName}}" value="{{this.user.lastName}}" [(ngModel)]="this.newUser.lastName" name="lastName" required />
-
-    <label> age </label>
-    <input type="number" placeholder="{{this.user.age}}" value="{{this.user.age}}" [(ngModel)]="this.newUser.age" name="age" required />
-
-    <label> height </label>
-    <input type="number" placeholder="{{this.user.height}}" value="{{this.user.height}}" [(ngModel)]="this.newUser.height" name="height" required />
-
-    <label> weigth </label>
-    <input type="number" placeholder="{{this.user.weigth}}" value="{{this.user.weigth}}" [(ngModel)]="this.newUser.weigth" name="weigth" required />
-
-    <label> mass_muscle </label>
-    <input type="number" placeholder="{{this.user.mass_muscle}}" value="{{this.user.mass_muscle}}" [(ngModel)]="this.newUser.mass_muscle" name="mass_muscle" required />
-
-    <label> mass_water </label>
-    <input type="number" placeholder="{{this.user.mass_water}}" value="{{this.user.mass_water}}" [(ngModel)]="this.newUser.mass_water" name="mass_water" required />
-
-    <label> mass_bone </label>
-    <input type="number" placeholder="{{this.user.mass_bone}}" value="{{this.user.mass_bone}}" [(ngModel)]="this.newUser.mass_bone" name="mass_bone" required />
-
-    <label> mass_fat </label>
-    <input type="number" placeholder="{{this.user.mass_fat}}" value="{{this.user.mass_fat}}" [(ngModel)]="this.newUser.mass_fat" name="mass_fat" required />
-
-
-
-
-
-
-    <!-- <input type="text" #spec />
-    <button (click)="addSpec(spec.value); spec.value = ''"> add </button>
-
-    <ul>
-      <li *ngFor="let spec of newPhone.specs"> {{ spec }} </li>
-    </ul>
-    <small *ngIf="!newPhone.specs.length"> This phone has no specs :( </small> -->
-
-
-
-  </fieldset>
-  <button (click)="submit()"> submit </button>
-</form>
+    	</div>
+    </div>
+  </div>
+</section>
